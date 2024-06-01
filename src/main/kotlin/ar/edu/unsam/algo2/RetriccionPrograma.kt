@@ -1,6 +1,6 @@
 package ar.edu.unsam.algo2
 
-abstract class RetriccionPrograma {
+abstract class RetriccionPrograma {//template method
     val acciones = mutableListOf<Acciones>()
     abstract fun seCumple(programa: Programa): Boolean
 
