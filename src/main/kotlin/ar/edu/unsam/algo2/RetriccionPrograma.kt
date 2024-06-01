@@ -1,16 +1,21 @@
 package ar.edu.unsam.algo2
 
 abstract class RetriccionPrograma {
+    val acciones = mutableListOf<Acciones>()
     abstract fun seCumple(programa: Programa): Boolean
+
+    fun ejecutarAcciones(programa: Programa) {
+        acciones.forEach { accion -> accion.ejecutar(programa) }
+    }
 
 }
 
 class RatingMinimo(val minimoRating: Int) : RetriccionPrograma() {
-    override fun seCumple(programa: Programa) = programa.promedioDeRatings() > minimoRating
+    override fun seCumple(programa: Programa) = programa.promedioDeRatings() < minimoRating
 }
 
 class MaximosConductoresPrincipales(val maximoCantidad: Int) : RetriccionPrograma() {
-    override fun seCumple(programa: Programa) = programa.cantidadDePresentadores() > maximoCantidad
+    override fun seCumple(programa: Programa) = programa.cantidadDePresentadores() < maximoCantidad
 }
 
 class ConductorEspesifico(val presentador: String) : RetriccionPrograma() {
@@ -18,7 +23,7 @@ class ConductorEspesifico(val presentador: String) : RetriccionPrograma() {
 }
 
 class MaximoPresupuesto(val presupuesto: Float) : RetriccionPrograma() {
-    override fun seCumple(programa: Programa) = programa.presupuesto > presupuesto
+    override fun seCumple(programa: Programa) = programa.presupuesto < presupuesto
 }
 
 class RestriccionOrCompuesta(val restricciones: List<RetriccionPrograma>) : RetriccionPrograma() {
