@@ -9,6 +9,7 @@ class Programa {
     val ratings = mutableListOf<Rating>()
     var presupuesto = 10000.0
     var duracion = 20.0
+    var horario: Int = 1
     var sponsors = mutableListOf<String>()
     var titulo = " "
     var dias = mutableListOf<DayOfWeek>()
@@ -34,8 +35,9 @@ class Programa {
     fun mitadDeDuracion() = duracion / 2
     fun tituloEnPalabras() = titulo.split("")
     fun presentadorPrincipal(): Presentador = presentadores[0] //Determina que el presentador 0 es el principal
+    fun agregarPresentador(presentador: Presentador) = presentadores.add(presentador)
+    fun mailDeConductores() = presentadores.map { presentador -> presentador.mail }
 
-    fun agregarPresentador(presentador: Presentador) { presentadores.add(presentador)}
 
 }
 

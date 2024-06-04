@@ -20,11 +20,11 @@ class DividirPrograma() : Acciones {
             sponsors = programa.sponsors
             duracion = programa.mitadDeDuracion()
             titulo = "${programa.tituloEnPalabras()[1]} en el aire!"
-            dias = dias
+            dias = programa.dias
         }
+        grilla.borrarPrograma(programa)
         grilla.agregarPrograma(programa1)
         grilla.agregarPrograma(programa2)
-        grilla.borrarPrograma(programa)
     }
 }
 
@@ -41,9 +41,10 @@ class CambiarPrograma() : Acciones {
             sponsors = nuevoSponsor
             duracion = nuevaDuracion
             titulo = nuevoTitulo
+            dias = programa.dias
         }
-        grilla.agregarPrograma(programaSimpson)
         grilla.borrarPrograma(programa)
+        grilla.agregarPrograma(programaSimpson)
     }
 }
 
@@ -62,7 +63,10 @@ class FusionarPrograma() : Acciones {
             sponsors = elegirPrograma(programa, siguientePrograma).sponsors
             duracion = programa.duracion + siguientePrograma.duracion
             titulo = elegirTitulo()
+            dias = programa.dias
         }
-
+        grilla.borrarPrograma(programa)
+        grilla.borrarPrograma(siguientePrograma)
+        grilla.agregarPrograma(programaFusion)
     }
 }
