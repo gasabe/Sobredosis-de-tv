@@ -4,8 +4,8 @@ abstract class RetriccionPrograma {//template method
     val acciones = mutableListOf<Acciones>()
     abstract fun seCumple(programa: Programa): Boolean
 
-    fun ejecutarAcciones(programa: Programa) {
-        acciones.forEach { accion -> accion.ejecutar(programa) }
+    fun ejecutarAcciones(programa: Programa, grilla: Grilla) {
+        acciones.forEach { accion -> accion.ejecutar(programa,grilla) }
     }
 
 }
